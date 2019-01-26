@@ -1,28 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import ListingContainer from './components/ListingContainer'
 import './App.css';
 
+const getList = () => fetch('https://www.reddit.com/r/motorcycles/new.json?sort=new')
+  .then(response => response.json())
+  .then(json => json.data.children)
+  .then(children => children.map(
+    ({data: {title, thumbnail}}) => ({title, thumbnail})
+  ))
+
+// Main app
 class App extends Component {
+  state = {
+    itemList: []
+  };
+
+  componentWillMount() {
+    this._asyncRequest = getList().then(
+      itemList => {
+        this._asyncRequest = null;
+        this.setState({itemList: itemList});
+      }
+    );
+  }
+
+  componentWillUnmount() {
+    if (this._asyncRequest) {
+      this._asyncRequest.cancel();
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <ListingContainer itemList={this.state.itemList} />
       </div>
     );
-  }
+  };
 }
 
 export default App;

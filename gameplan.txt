@@ -1,0 +1,37 @@
+Mission:
+"Given a ‘listing’ endpoint to the reddit API (https://www.reddit.com/r/subreddit/new.json?sort=new), display a list
+of reddit listings with the thumbnail and title. This list should be able to be paginated. Clicking on one of the
+rows should take the user to a view with the comments for that listing. 
+Possible endpoints can be [hot, new, random, top] anything you like. An example URL would be
+http://www.reddit.com/r/all/new.json
+
+Givens
+1. Reddit API returns list of posts e.g. http://www.reddit.com/r/all/new.json
+    a. listings
+        i.      thumbnail link
+        ii.     title
+
+Components
+1.  Container
+2.  Listing
+3.  Item
+4.  Item Title
+5.  Item Thumbnail
+6.  Comments container
+7.  Comment
+8.  Comment content
+9.  Comment score
+10. Comment date
+11. Pagination
+12. Page before
+13. Page after
+
+Plan
+1.  Design page layout
+2.  Grok JSON response
+3.  Build listing page
+4.  Build Item
+4a. Styles
+5.  Add pagination
+6.  Build comment page
+7.  Build comment
