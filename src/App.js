@@ -5,9 +5,6 @@ import './App.css';
 const getList = () => fetch('https://www.reddit.com/r/motorcycles/new.json?sort=new')
   .then(response => response.json())
   .then(json => json.data.children)
-  .then(children => children.map(
-    ({data: {title, thumbnail}}) => ({title, thumbnail})
-  ))
 
 // Main app
 class App extends Component {
@@ -19,7 +16,7 @@ class App extends Component {
     this._asyncRequest = getList().then(
       itemList => {
         this._asyncRequest = null;
-        this.setState({itemList: itemList});
+        this.setState({itemList});
       }
     );
   }
