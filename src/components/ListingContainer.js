@@ -5,7 +5,7 @@ const ListingContainer = ({itemList}) => {
     return(
         <div>
             {
-                itemList.map(({data}) => <Item itemData={data} />)
+                itemList.map(({data}) => <Item itemData={data} key={data.name} />)
             }
         </div>
     );

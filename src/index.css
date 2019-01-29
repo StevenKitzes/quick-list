@@ -36,3 +36,8 @@ code {
 .item-title {
   display: inline-block;
 }
+
+.nav-button {
+  padding-left: 2em;
+  padding-right: 2em;
+}
