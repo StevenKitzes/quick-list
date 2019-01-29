@@ -31,6 +31,7 @@ class App extends Component {
     return (
       <div className="App">
         <ListingContainer itemList={this.state.itemList} />
+        {/* <NavButtons last={this.state.last} next={this.state.next} /> */}
       </div>
     );
   };
