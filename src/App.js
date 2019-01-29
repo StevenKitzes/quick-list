@@ -9,8 +9,8 @@ const baseUrl = 'https://www.reddit.com/r/motorcycles/new.json?sort=new';
 class App extends Component {
   state = {
     itemList: [],
-    last: '',
-    next: ''
+    after: '',
+    before: ''
   };
   
   componentWillMount() {
@@ -27,7 +27,7 @@ class App extends Component {
     return (
       <div className="App">
         <ListingContainer itemList={this.state.itemList} />
-        <NavButtons last={this.state.last} next={this.state.next} updateSub={this.updateSub.bind(this)} />
+        <NavButtons before={this.state.before} after={this.state.after} updateSub={this.updateSub.bind(this)} />
       </div>
     );
   };
@@ -44,11 +44,13 @@ class App extends Component {
     this.getSub(url).then(
       data => {
         this._asyncRequest = null;
-        this.setState({
+        let newState = {
           itemList: data.children,
-          before: data.last,
-          next: data.after
-        });
+          before: data.children[0].data.name,
+          after: data.after
+        }
+        this.setState(newState);
+        window.scrollTo(0,0);
       }
     )
   }

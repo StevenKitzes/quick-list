@@ -13,14 +13,19 @@ code {
     monospace;
 }
 
-.item {
+ul {
+  list-style-type: none;
+}
+
+.item-header {
   background-color: #FFFFF0;
   border-radius: 1em;
   border-style: dashed;
   border-color: black;
   border-width: 1px;
   height: 60px;
-  margin: 2em;
+  margin-bottom: 1em;
+  margin-top: 2em;
   padding: 0;
   overflow: hidden;
 }
@@ -35,9 +40,23 @@ code {
 
 .item-title {
   display: inline-block;
+  margin-left: 1em;
 }
 
 .nav-button {
   padding-left: 2em;
   padding-right: 2em;
+}
+
+.comment {
+  border-radius: .5em;
+  border-style: none solid solid solid;
+  border-width: 1px;
+  border-color: black;
+  margin: 0.5em;
+  padding: 0 0.5em 0.5em 0.5em;
+}
+
+.author {
+  font-weight: bold;
 }
