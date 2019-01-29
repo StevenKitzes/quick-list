@@ -2,31 +2,34 @@ import React, { Component } from 'react';
 import ListingContainer from './components/ListingContainer'
 import './App.css';
 
-const getList = () => fetch('https://www.reddit.com/r/motorcycles/new.json?sort=new')
-  .then(response => response.json())
-  .then(json => json.data.children)
 
 // Main app
 class App extends Component {
   state = {
-    itemList: []
+    itemList: [],
+    last: null,
+    next: null
   };
-
+  
   componentWillMount() {
-    this._asyncRequest = getList().then(
-      itemList => {
+    this._asyncRequest = this.getSub().then(
+      data => {
         this._asyncRequest = null;
-        this.setState({itemList});
+        this.setState({
+          itemList: data.children,
+          before: data.last,
+          next: data.after
+        });
       }
     );
   }
-
+  
   componentWillUnmount() {
     if (this._asyncRequest) {
       this._asyncRequest.cancel();
     }
   }
-
+  
   render() {
     return (
       <div className="App">
@@ -35,6 +38,10 @@ class App extends Component {
       </div>
     );
   };
+
+  getSub = () => fetch('https://www.reddit.com/r/motorcycles/new.json?sort=new')
+    .then(response => response.json())
+    .then(json => json.data);
 }
 
 export default App;
