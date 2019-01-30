@@ -44,6 +44,7 @@ class App extends Component {
 
   // Update the page based on current endpoint and pagination details
   updateSub(before, after) {
+    console.log('Trying to navigate to before: ' + before + ' and new after: ' + after);
     // Set the URL based on base URL plus any pagination specification
     let url =
       baseUrl +
@@ -57,8 +58,9 @@ class App extends Component {
         let newState = {
           itemList: data.children,
           before: data.children[0].data.name,
-          after: data.after
+          after: data.children[data.children.length-1].data.name
         }
+        console.log('got new before: ' + newState.before + ' and new after: ' + newState.after);
         this.setState(newState);
         // Reset scroll position to page top
         window.scrollTo(0,0);
