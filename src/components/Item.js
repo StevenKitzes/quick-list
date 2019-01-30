@@ -1,21 +1,28 @@
 import React, {Component} from 'react';
 
+// Some hardcoded values for retrieving comments for a particular item
 const baseUrl = 'https://www.reddit.com/r/motorcycles/comments/';
 const urlTail = '.json';
 
+// React component representing an actual item
 class Item extends Component {
+    // Define/set initial state
     state = {
         comments: null,
         id: '',
         toggled: false
     }
 
-    componentWillMount() {
+    // Update the state when the component has mounted
+    componentDidMount() {
         this.setState({id: this.props.itemData.id});
     }
     
+    // React render
     render() {
+        // Destructure data from props
         let {thumbnail, title} = this.props.itemData;
+        // Simple var to track whether a thumbnail exists for this item
         let hasThumb = !(thumbnail === 'self' || thumbnail === 'nsfw');
         return (
             <div className="item" onClick={() => this.toggleComments(this.state.id)}>
@@ -24,19 +31,21 @@ class Item extends Component {
                         alt={hasThumb ? 'Item thumbail' : 'Placeholder thumbnail'} />
                     <h3 className="item-title">{title}</h3>
                 </div>
+                {/* For user clarity, display comments if they exist, or display note that no comments exist */}
                 <ul>{this.state.comments ? (
                     this.state.comments.length ?
                         this.state.comments.map((comment) => {
                             return this.renderCommentsRecursive(comment);
                         }) :
-                        [<h4>No comments to display for this item.</h4>]
+                        [<h4>No comments to display for this item.</h4>] /* If comment item exists but empty, report that */
                     ) :
-                    []
+                    [] /* If comments doesn't exist, pass nothing back as JSX */
                 }</ul>
             </div>
         );
     };
 
+    // Display this comment, and if it has children, recursively display them as well
     renderCommentsRecursive(comment) {
         let body = <li className="comment"><span className="author">{comment.data.author}:</span> {comment.data.body}</li>;
         let children = [];

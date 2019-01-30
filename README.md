@@ -23,7 +23,13 @@ The page will load a listing of articles posted to the r/motorcycles subreddit, 
 
 Currently, the subreddit r/motorcycles is hardcoded into this app, and the endpoint being used is always the 'new' endpoint.  Given more time, I would want to add some UI elements to make it possible for the user to manually select an alternative subreddit and sorting endpoint.
 
+Specification did not call for item content body to be displayed under any circumstance; would want to display this, perhaps along with comment information in the future.
+
 Comments are currently displayed as simply nested unordered list items.  In other words, they are not composed of React components.  Give more time, I would want to develop a more elaborate comment component for use here.
+
+Currently the updateSub() function allows for both `before` and `after` pagination options, which is not allowed by the Reddit API.  Better error handling here would be desirable.  Page functionality is not hindered, this is more of a catch for future development.
+
+Would like to implement unit testing, given more time for future development.
 
 Collapsible comment sections would be convenient for items that have a large number of comments.
 

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+// Navigation for pagination provided via these buttons
 class NavButtons extends Component {
     render() {
         return (

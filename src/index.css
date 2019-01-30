@@ -29,7 +29,7 @@ ul {
   padding: 0;
   overflow: hidden;
 
-  /*  */
+  /* borrowed from w3schools.com for vertical aligning */
   position: relative;
 }
 
@@ -39,7 +39,7 @@ ul {
   padding: 0;
   width: 80px;
 
-  /*  */
+  /* borrowed from w3schools.com for vertical aligning */
   margin: 0;
   position: absolute;
   top: 50%;
