@@ -35,7 +35,7 @@ Collapsible comment sections would be convenient for items that have a large num
 
 It would be nice to spend some more time making the app more attractive.
 
-Spend more time learning the Reddit API.  Some of the features listed in the API documentation seem not to work or to be incomplete as described.  I found suitable workarounds for the situations that caught me up but these feel a bit kludgey.
+Spend more time learning the Reddit API.  Some of the features listed in the API documentation did not work as described, either due to my lack of understanding or due to some errors in the API behavior.  I found suitable workarounds for the situations that caught me up but these feel a bit kludgey.
 
 ## Create-React-App notes follow
 
