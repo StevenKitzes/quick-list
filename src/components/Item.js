@@ -5,7 +5,7 @@ const urlTail = '.json';
 
 class Item extends Component {
     state = {
-        comments: [],
+        comments: null,
         id: '',
         toggled: false
     }
@@ -20,13 +20,19 @@ class Item extends Component {
         return (
             <div className="item" onClick={() => this.toggleComments(this.state.id)}>
                 <div className="item-header">
-                    <h3 className="item-title">{title}</h3>
                     <img className="item-thumbnail" src={hasThumb ? thumbnail: 'placeholder.png'}
                         alt={hasThumb ? 'Item thumbail' : 'Placeholder thumbnail'} />
+                    <h3 className="item-title">{title}</h3>
                 </div>
-                <ul>{this.state.comments.map((comment) => {
-                    return this.renderCommentsRecursive(comment);
-                })}</ul>
+                <ul>{this.state.comments ? (
+                    this.state.comments.length ?
+                        this.state.comments.map((comment) => {
+                            return this.renderCommentsRecursive(comment);
+                        }) :
+                        [<h4>No comments to display for this item.</h4>]
+                    ) :
+                    []
+                }</ul>
             </div>
         );
     };
@@ -51,7 +57,7 @@ class Item extends Component {
     toggleComments = (id) => {
         if(this.state.toggled) {
             this.setState({
-                comments: [],
+                comments: null,
                 toggled: !this.state.toggled
             });
         }

@@ -1,3 +1,36 @@
+## Project Notes
+
+This is a code challenge to showcase some of my skills by following the specification below:
+
+"Given a ‘listing’ endpoint to the reddit API (https://www.reddit.com/r/subreddit/new.json?sort=new), display a list of reddit listings with the thumbnail and title. This list should be able to be paginated. Clicking on one of the rows should take the user to a view with the comments for that listing. 
+Possible endpoints can be [hot, new, random, top] anything you like. An example URL would be http://www.reddit.com/r/all/new.json
+You can deploy it publicly and give us the URL or you can send us the project with a readme to run it locally!"
+
+## Installation and Usage Notes
+
+To run this project locally, you will need an up-to-date version of NodeJS and NPM, as well as Git running on your machine.  The project was developed using NodeJS v10.15.0 with NPM 6.4.1.
+
+To get started, clone the repository from GitHub, using the green button on the right side of this page:
+https://github.com/StevenKitzes/quick-list
+
+Once the project is cloned, navigate to the project directory on your command line, and use the command `npm install` to retrieve project dependencies (this might take a while, since React and the associated CRA are very dependency-heavy).  Finally, run `npm start` to run the front-end server.  Note that this will automatically attempt to open a browser tab pointed at the front-end server, but the front-end server may take a few moments longer to spool up, so the browser spin for a time before it finds something to connect to.  Note that you can manually navigate to localhost:3000 if needed.
+
+### Usage
+
+The page will load a listing of articles posted to the r/motorcycles subreddit, including a thumbnail and title for each.  The listings are paginated, so you can navigate forward and backward throughout the listings using the Last and Next buttons at the bottom of the page.  Clicking on an item will expand the comments for that item under its title.  Click again anywhere on the item or its comments will collapse them again.
+
+### Desired Improvements
+
+Currently, the subreddit r/motorcycles is hardcoded into this app, and the endpoint being used is always the 'new' endpoint.  Given more time, I would want to add some UI elements to make it possible for the user to manually select an alternative subreddit and sorting endpoint.
+
+Comments are currently displayed as simply nested unordered list items.  In other words, they are not composed of React components.  Give more time, I would want to develop a more elaborate comment component for use here.
+
+Collapsible comment sections would be convenient for items that have a large number of comments.
+
+It would be nice to spend some more time making the app more attractive.
+
+## Create-React-App notes follow
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
